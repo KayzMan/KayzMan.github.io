@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Play Kays Music.com</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+
+<style>
+body{
+	background-color: #909090;
+	background: url("music_18-wallpaper-1366x768.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.beautify{
+	background-color: rgba(13, 13, 13, 0.6);
+	width: 60%;
+	height: 80%;
+	padding: 80px;
+	margin: 125px 0px 0px 20px; 
+	color: white;
+	border-radius: 2px 80px 2px 80px;
+	border-right-style: dotted;
+	border-left-style: dotted;
+	border-width: 4px;
+	border-left-color: red;
+	border-right-color: blue;
+}
+</style>
+
+</head>
+
+<body>
+<div class="beautify">
+
+<h1>Kayz Music :) \o/</h1>
+<br>
+
+<input type="file" id="file" onchange="onInputFileChange()"><br><br><br>
+
+<b>Current Track: </b><p id="c_track"></p>
+
+<br><br>
+
+<audio id="my_audio" controls loop autoplay>
+</audio>
+
+<script>
+
+function onInputFileChange(){
+	var file = document.getElementById("file").files[0];
+	var url = URL.createObjectURL(file);
+	document.getElementById("my_audio").src = url;
+	document.getElementById("c_track").innerHTML = document.getElementById("file").files[0].name;
+}
+
+var the_audio = document.getElementById("my_audio");
+the_audio.onplaying = function(){
+	document.getElementById("msg").innerHTML = "Audio now playing!";	
+};
+
+the_audio.onpause = function(){
+	document.getElementById("msg").innerHTML = "Audio now paused!";	
+};
+
+</script>
+
+<p id="msg"></p>
+
+</div>
+</body>
+
+</html>
